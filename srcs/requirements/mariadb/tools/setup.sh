@@ -17,6 +17,20 @@ mkdir -p /run/mysqld
 chown mysql:mysql /run/mysqld
 chmod 755 /run/mysqld
 
+
+echo "Checking database..."
+
+ls -ld /var/lib/mysql
+ls -ld /var/lib/mysql/mysql || echo "mysql directory does not exist"
+
+if [ ! -d "$DB_PATH/mysql" ]; then
+	echo ">>> ENTERED INITIALIZATION <<<"
+else
+	echo ">>> SKIPPED INITIALIZATION <<<"
+fi
+
+
+
 if [ ! -d "$DB_PATH/mysql" ]; then
 	echo "Initializing MariaDB..."
 
