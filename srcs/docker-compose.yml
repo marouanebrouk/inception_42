@@ -12,6 +12,12 @@ services:
     networks:
       - net1
     restart: unless-stopped
+  nginx:
+    build:
+      context: ./requirements/nginx
+    container_name: nginx
+    ports:
+    - "443:443"
 
 volumes:
   mariadb_data:
