@@ -4,7 +4,6 @@ services:
     container_name: mariadb
     build:
       context: ./requirements/mariadb
-    image: mariadb
     env_file:
       - .env
     volumes:
@@ -16,7 +15,6 @@ services:
     container_name: nginx
     build:
       context: ./requirements/nginx
-    image: nginx # this means that the image will be built from the Dockerfile in the specified context
     ports:
       - "433:433"
 
