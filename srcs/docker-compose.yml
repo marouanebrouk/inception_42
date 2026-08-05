@@ -16,7 +16,7 @@ services:
     build:
       context: ./requirements/nginx
     ports:
-      - "433:433"
+      - "443:443"
 
 volumes:
   mariadb_data:
