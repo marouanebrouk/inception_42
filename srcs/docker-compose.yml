@@ -17,7 +17,7 @@ services:
       context: ./requirements/nginx
     container_name: nginx
     ports:
-      - "443:80"
+      - "80:80"
 
 volumes:
   mariadb_data:
