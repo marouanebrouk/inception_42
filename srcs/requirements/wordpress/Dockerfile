@@ -16,6 +16,12 @@ RUN wget https://wordpress.org/latest.tar.gz -P /tmp \
     && cp -r /tmp/wordpress/* /var/www/html/ \
     && rm -rf /tmp/latest.tar.gz /tmp/wordpress
 
+COPY tools/setup.sh /usr/local/bin/setup.sh
+
+RUN chmod +x /usr/local/bin/setup.sh
+
 EXPOSE 9000
+
+ENTRYPOINT ["/usr/local/bin/setup.sh"]
 
 CMD ["php-fpm8.2", "-F"]
