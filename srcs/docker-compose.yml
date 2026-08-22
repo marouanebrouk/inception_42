@@ -6,8 +6,35 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
+    secrets:
+      - db_password
+      - db_root_password
     volumes:
       - mariadb_data:/var/lib/mysql
 
+  wordpress:
+    container_name: wordpress
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
+    secrets:
+      - credentials
+      - db_password
+    volumes:
+      - wordpress_data:/var/www/html
+
 volumes:
   mariadb_data:
+  wordpress_data:
+
+secrets:
+  credentials:
+    file: ./secrets/credentials.txt
+  db_password:
+    file: ./secrets/db_password.txt
+  db_root_password:
+    file: ./secrets/db_root_password.txt
