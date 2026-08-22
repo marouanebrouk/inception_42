@@ -4,10 +4,10 @@ set -e
 
 
 # hardcoded values :
-# DB_NAME="wordpress"
-# DB_USER="wpuser"
-# DB_PASS="password"
-# ROOT_PASS="rootpassword"
+DB_NAME="wordpress"
+DB_USER="wpuser"
+DB_PASS="password"
+ROOT_PASS="rootpassword"
 
 # env
 # MYSQL_DATABASE=wordpress
@@ -15,10 +15,10 @@ set -e
 # MYSQL_PASSWORD=password
 # MYSQL_ROOT_PASSWORD=rootpassword
 
-DB_NAME="$MYSQL_DATABASE"
-DB_USER="$MYSQL_USER"
-DB_PASS="$MYSQL_PASSWORD"
-ROOT_PASS="$MYSQL_ROOT_PASSWORD"
+# DB_NAME="$MYSQL_DATABASE"
+# DB_USER="$MYSQL_USER"
+# DB_PASS="$MYSQL_PASSWORD"
+# ROOT_PASS="$MYSQL_ROOT_PASSWORD"
 
 
 DB_PATH="/var/lib/mysql"
