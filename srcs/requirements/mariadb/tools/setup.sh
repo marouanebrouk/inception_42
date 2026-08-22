@@ -2,12 +2,11 @@
 
 set -e
 
-
 # hardcoded values :
-DB_NAME="wordpress"
-DB_USER="wpuser"
-DB_PASS="password"
-ROOT_PASS="rootpassword"
+# DB_NAME="wordpress"
+# DB_USER="wpuser"
+# DB_PASS="password"
+# ROOT_PASS="rootpassword"
 
 # env
 # MYSQL_DATABASE=wordpress
@@ -15,35 +14,19 @@ ROOT_PASS="rootpassword"
 # MYSQL_PASSWORD=password
 # MYSQL_ROOT_PASSWORD=rootpassword
 
-# DB_NAME="$MYSQL_DATABASE"
-# DB_USER="$MYSQL_USER"
-# DB_PASS="$MYSQL_PASSWORD"
-# ROOT_PASS="$MYSQL_ROOT_PASSWORD"
+DB_NAME="$MYSQL_DATABASE"
+DB_USER="$MYSQL_USER"
+DB_PASS="$MYSQL_PASSWORD"
+ROOT_PASS="$MYSQL_ROOT_PASSWORD"
 
 
 DB_PATH="/var/lib/mysql"
-
-
 
 # Create the necessary directories for MariaDB to run and set the appropriate permissions. The /run/mysqld directory is used by MariaDB to store its socket file and PID file, and it needs to be owned by the mysql user and have the correct permissions for MariaDB to function properly.
 #systemd not used in this container, so we need to create the /run/mysqld directory manually and set the correct ownership and permissions for it. This is necessary for MariaDB to start and run properly in the container.
 mkdir -p /run/mysqld
 chown mysql:mysql /run/mysqld
 chmod 755 /run/mysqld
-
-
-# echo "Checking database..."
-
-# ls -ld /var/lib/mysql
-# ls -ld /var/lib/mysql/mysql || echo "mysql directory does not exist"
-
-# if [ ! -d "$DB_PATH/mysql" ]; then
-# 	echo ">>> ENTERED INITIALIZATION <<<"
-# else
-# 	echo ">>> SKIPPED INITIALIZATION <<<"
-# fi
-
-
 
 if [ ! -d "$DB_PATH/mysql" ]; then
 	echo "Initializing MariaDB..."
