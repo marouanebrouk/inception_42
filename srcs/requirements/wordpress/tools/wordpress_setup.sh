@@ -11,8 +11,8 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 	DB_PASS=$(tr -d '\r\n' < /run/secrets/db_password)
 
 	wp config create --allow-root \
-		--dbname="${MYSQL_DATABASE}" \
-		--dbuser="${MYSQL_USER}" \
+		--dbname="${WP_DATABASE}" \
+		--dbuser="${WP_DBUSER}" \
 		--dbpass="${DB_PASS}" \
 		--dbhost="mariadb:3306" \
 		--dbcharset="utf8" \

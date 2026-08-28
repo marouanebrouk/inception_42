@@ -41,12 +41,27 @@ services:
 
 volumes:
   mariadb_data:
+    name: mariadb_data
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mbrouk/data/mariadb
+
   wordpress_data:
+    name: wordpress_data
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/mbrouk/data/wordpress
+
+
 
 secrets:
   credentials:
-    file: ./secrets/credentials.txt
+    file: ../secrets/credentials.txt
   db_password:
-    file: ./secrets/db_password.txt
+    file: ../secrets/db_password.txt
   db_root_password:
-    file: ./secrets/db_root_password.txt
+    file: ../secrets/db_root_password.txt

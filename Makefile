@@ -1,12 +1,17 @@
 NAME = inception42
 
 COMPOSE = docker compose -f srcs/docker-compose.yml
+DATA_DIR = /home/mbrouk/data
 
 all:
-	$(COMPOSE) up --build
+	mkdir -p $(DATA_DIR)/wordpress
+	mkdir -p $(DATA_DIR)/mariadb
+	$(COMPOSE) up -d --build
 
 up:
-	$(COMPOSE) up --build
+	mkdir -p $(DATA_DIR)/wordpress
+	mkdir -p $(DATA_DIR)/mariadb
+	$(COMPOSE) up -d
 
 down:
 	$(COMPOSE) down
@@ -20,8 +25,10 @@ start:
 clean:
 	$(COMPOSE) down -v
 
+
 fclean: clean
 	docker system prune -af
+	sudo rm -rf /home/mbrouk/data
 
 re: fclean all
 
