@@ -1,6 +1,7 @@
 services:
   mariadb:
     container_name: mariadb
+    restart: always
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
@@ -16,6 +17,7 @@ services:
 
   wordpress:
     container_name: wordpress
+    restart: always
     build:
       context: ./requirements/wordpress
       dockerfile: Dockerfile
@@ -33,6 +35,7 @@ services:
 
   nginx:
     container_name: nginx
+    restart: always
     build:
       context: ./requirements/nginx
       dockerfile: Dockerfile

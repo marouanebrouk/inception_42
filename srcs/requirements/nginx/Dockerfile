@@ -8,5 +8,3 @@ COPY ./tools/nginx_start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/nginx_start.sh
 
 ENTRYPOINT ["nginx_start.sh"]
-
-CMD ["nginx", "-g", "daemon off;"]
