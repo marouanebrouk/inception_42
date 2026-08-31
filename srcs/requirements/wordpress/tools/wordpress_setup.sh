@@ -7,8 +7,8 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 	cd /var/www/html
 	wp core download --allow-root
 
-	WP_ADMIN_PASS=$(tr -d '\r\n' < /run/secrets/credentials)
-	DB_PASS=$(tr -d '\r\n' < /run/secrets/db_password)
+	WP_ADMIN_PASS=$( cat /run/secrets/credentials)
+	DB_PASS=$( cat /run/secrets/db_password)
 
 	wp config create --allow-root \
 		--dbname="${WP_DATABASE}" \
@@ -17,7 +17,6 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 		--dbhost="mariadb:3306" \
 		--dbcharset="utf8" \
 		--skip-check
-	wp config shuffle-salts --allow-root
 
 	wp core install --allow-root \
 		--url="${DOMAIN_NAME}" \
